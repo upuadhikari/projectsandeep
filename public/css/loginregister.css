@@ -830,3 +830,10 @@ label.valid:after {
         margin-bottom: 10px;
     }
 }
+
+#message {
+    color: #808080;
+    border: none;
+    width: 650px;
+    border-bottom: 1px solid #999;
+}

@@ -13,9 +13,19 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
-    <link rel="stylesheet" href ="{{ asset('css/styles.css') }}">
+
+    @if (request()->is('blog'))
+    <link rel="stylesheet" href ="{{ asset('css/blog.css') }}">
+@else
+<link rel="stylesheet" href ="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href ="{{ asset('css/profile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/loginregister.css') }}">
+    <link rel="stylesheet" href ="{{ asset('css/product.css') }}">
+@endif
+
+    
+
+
 
     <!-- fonts -->
     <link rel="stylesheet" href="{{ asset('fonts/material-icon/css/material-design-iconic-font.min.css') }}">
@@ -51,14 +61,14 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container">
                     <a class="navbar-brand" href="home.html">
-                        <img class="img-fluid sitelogo" src="images/logo.png" alt="" width="200" height="60">
+                        <img class="img-fluid sitelogo" src="{{asset('images/logo.png')}}" alt="" width="200" height="60">
                     </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                <a class="nav-link active text-white px-3" aria-current="page" href="/">Home</a>
+                <a class="nav-link active text-white px-3" aria-current="page" href="{{ url('/') }}">Home</a>
                     @auth
                 <a class="nav-link text-white px-3" href="{{ url('/dashboard') }}">Dashboard</a>                
                 <a class="nav-link text-white px-3" href="{{ url('/profile') }}">{{ Auth::user()->name }} profile</a>

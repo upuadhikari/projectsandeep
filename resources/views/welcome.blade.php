@@ -1,3 +1,5 @@
+
+
 @include('header')
 
             <div class="container" id="carousel">
@@ -29,6 +31,7 @@
         </div>
     </div>
     <hr>
+    
     <div class="container">
         <div class="row mx-auto">
             <div class="col-sm-3 d-flex justify-content-center justify-content-md-start">
@@ -37,99 +40,18 @@
                     <span class="card-notify-total">5</span> -->
                     <img src="images/h1.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title" id="breed-name">Siberian Husky</h5>
-                        <p class="card-text">The <b>Siberian Husky</b> is a medium-sized working dog, quick and light on his feet and free and graceful in action.
-                        </p>
-                        <a href="product.html" class="btn btn-primary">More Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 d-flex justify-content-center justify-content-md-start">
-                <div class="card text-center mb-2" style="width: 18rem;">
-                    <img src="images/h1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Siberian Husky</h5>
-                        <p class="card-text">The <b>Siberian Husky</b> is a medium-sized working dog, quick and light on his feet and free and graceful in action.
-                        </p>
-                        <a href="#" class="btn btn-primary">More Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 d-flex justify-content-center justify-content-md-start">
-                <div class="card text-center mb-2" style="width: 18rem;">
-                    <img src="images/h1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Siberian Husky</h5>
-                        <p class="card-text">The <b>Siberian Husky</b> is a medium-sized working dog, quick and light on his feet and free and graceful in action.
-                        </p>
-                        <a href="#" class="btn btn-primary">More Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 d-flex justify-content-center justify-content-md-start">
-                <div class="card text-center mb-2" style="width: 18rem;">
-                    <img src="images/h1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Siberian Husky</h5>
-                        <p class="card-text">The <b>Siberian Husky</b> is a medium-sized working dog, quick and light on his feet and free and graceful in action.
-                        </p>
-                        <a href="#" class="btn btn-primary">More Details</a>
+                        <h5 class="card-title" id="breed-name">{{$product->name}}</h5>
+                        <p class="card-text">{{$product->detail}}</p>
+                        <a href="{{ url('/homeproducts/view-product/'.$product->id) }}" class="btn btn-primary">More Details</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    @endforeach
     <hr>
-    <div class="container">
-        <div class="row mx-auto">
-            <div class="d-flex col-sm-3 d-flex justify-content-center justify-content-md-start">
-                <div class="card text-center mb-3" style="width: 18rem;">
-                    <img src="images/h1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Siberian Husky</h5>
-                        <p class="card-text">The <b>Siberian Husky</b> is a medium-sized working dog, quick and light on his feet and free and graceful in action.
-                        </p>
-                        <a href="#" class="btn btn-primary">More Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 d-flex justify-content-center justify-content-md-start">
-                <div class="card text-center mb-3" style="width: 18rem;">
-                    <img src="images/h1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Siberian Husky</h5>
-                        <p class="card-text">The <b>Siberian Husky</b> is a medium-sized working dog, quick and light on his feet and free and graceful in action.
-                        </p>
-                        <a href="#" class="btn btn-primary">More Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 d-flex justify-content-center justify-content-md-start">
-                <div class="card text-center mb-3" style="width: 18rem;">
-                    <img src="images/h1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Siberian Husky</h5>
-                        <p class="card-text">The <b>Siberian Husky</b> is a medium-sized working dog, quick and light on his feet and free and graceful in action.
-                        </p>
-                        <a href="#" class="btn btn-primary">More Details</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 d-flex justify-content-center justify-content-md-start">
-                <div class="card text-center mb-3" style="width: 18rem;">
-                    <img src="images/h1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Siberian Husky</h5>
-                        <p class="card-text">The <b>Siberian Husky</b> is a medium-sized working dog, quick and light on his feet and free and graceful in action.
-                        </p>
-                        <a href="#" class="btn btn-primary">More Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
+   
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <li class="page-item disabled">

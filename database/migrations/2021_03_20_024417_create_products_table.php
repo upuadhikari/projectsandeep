@@ -19,7 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('detail');
             $table->integer('price');
             $table->integer('discount');
-            $table->foreign('id')->references('id')->on('users');
+            $table->integer('u_id')->unsigned();
+            $table->foreign('u_id')->references('id')->on('users');
             $table->boolean('status')->default(0);
             $table->string('picture');
             $table->integer('sellers_id')->unsigned();
