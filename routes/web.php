@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 Use App\Http\Controllers\UserController;
 Use App\Http\Controllers\ProductController;
+Use App\Http\Controllers\BlogController;
 Use App\Http\Controllers\FrontproductController;
 
 /*
@@ -44,6 +45,19 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
         Route::get('/edit-product/{id}',[ProductController::class, 'editProduct']);
         Route::post('/edit-product/{id}',[ProductController::class, 'updateProduct']);
         Route::post('/delete-product/{id}',[ProductController::class, 'deleteProduct']);
+
+    });
+
+    
+    Route::group(['prefix'=>'blog','middleware'=>'auth'],function (){
+
+        Route::get('/',[BlogController::class, 'index']);
+        Route::post('/updateuserinfo/{id}',[BlogController::class, 'UpdateBlog']);
+        Route::get('/add-blog',[BlogController::class, 'addBlog']);
+        Route::post('/add-blog',[BlogController::class, 'addNewBlog']);
+        Route::get('/edit-blog/{id}',[BlogController::class, 'editBlog']);
+        Route::post('/edit-blog/{id}',[BlogController::class, 'updateBlog']);
+        Route::post('/delete-blog/{id}',[BlogController::class, 'deleteBlog']);
 
     });
 

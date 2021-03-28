@@ -10,16 +10,16 @@ use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
-    // public function __construct()
-    // {
-    // 	$this->middleware(function ($request, $next) {  
-    //     if (!Auth::user()->role == 3) {
-    //     	dd("error");
-    //         abort(404);
-    //     }
-    //         return $next($request);
-    //     });
-    // }
+    public function __construct()
+    {
+    	$this->middleware(function ($request, $next) {  
+        if (!Auth::user()->role == 3) {
+        	dd("error");
+            abort(404);
+        }
+            return $next($request);
+        });
+    }
     public function index(Request $request){
         $data= Products::orderBy('id','desc')->get();
         return view('admin.product.productview',compact('data'));
@@ -43,24 +43,23 @@ class ProductController extends Controller
             'price' => 'required',
         ]);
 
-
-        
             
             $product = new Products;
             $product->name = $request->name;
+            $product->picture = $request->picture;
             $product->detail = $request->detail;
             $product->price = $request->price;
             $product->discount = $request->discount;
             $product->status = $request->status;
             $product->u_id = Auth::user()->id;
 
-            if ($file = $request->file('profile_pic')) {
+            if ($file = $request->file('picture')) {
                 $uplodaDesc = $this->uploadFiles($file, 'members', $product->id);
-                if(File::exists(storage_path('app/public/uploads/members/'). $product->profile_pic)){
-                    File::delete(storage_path('app/public/uploads/members/'). $product->profile_pic);
+                if(File::exists(storage_path('app/public/uploads/members/'). $product->picture)){
+                    File::delete(storage_path('app/public/uploads/members/'). $product->picture);
                 }
                 if ( $uplodaDesc) {
-                    $product->profile_pic = $uplodaDesc['filename'];
+                    $product->picture = $uplodaDesc['filename'];
                 }
             }
 
@@ -122,7 +121,7 @@ class ProductController extends Controller
 
         $data= User::orderBy('id','desc')->where('status',1)->get();
         if ($result) {
-        	return view('admin.products.productview',compact('data'));
+        	return view('admin.product.productview',compact('data'));
         }
         
     }

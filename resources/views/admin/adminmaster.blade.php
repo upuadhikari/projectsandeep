@@ -50,6 +50,7 @@
           
         </div>
       </div>
+
       <div class="navbar-item has-dropdown is-hoverable">
       <a class="navbar-link" href="/admin/products">
           Products
@@ -64,6 +65,22 @@
           
         </div>
       </div>
+      
+      <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link" href="/admin/blog">
+          Blog
+        </a>
+        <div class="navbar-dropdown is-boxed">
+          <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
+            Active
+          </a>
+          <a class="navbar-item" href="https://bulma.io/documentation/overview/modifiers/">
+            Inactive
+          </a>
+          
+        </div>
+      </div>
+    </div>
     </div>
 
     <div class="navbar-end">
