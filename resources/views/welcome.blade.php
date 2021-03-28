@@ -1,5 +1,4 @@
 
-
 @include('header')
 
             <div class="container" id="carousel">
@@ -34,6 +33,7 @@
     
     <div class="container">
         <div class="row mx-auto">
+            @foreach ($products as $product)
             <div class="col-sm-3 d-flex justify-content-center justify-content-md-start">
                 <div class="card text-center mb-2" style="width: 18rem;">
                     <!-- <span class="card-notify-badge">Special</span>
@@ -46,10 +46,9 @@
                     </div>
                 </div>
             </div>
+            @endforeach
         </div>
-    </div>
-
-    @endforeach
+    </div>-
     <hr>
    
     <nav aria-label="Page navigation example">

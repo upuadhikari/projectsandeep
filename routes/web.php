@@ -21,8 +21,7 @@ Route::get('/',[FrontproductController::class, 'index']);
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::get('/',[UserController::class, 'index']);
-
-        
+       
     Route::group(['prefix'=>'users','middleware'=>'auth'],function (){
 
         Route::get('/',[UserController::class, 'index']);
@@ -35,7 +34,6 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
     });
 
-
     Route::group(['prefix'=>'products','middleware'=>'auth'],function (){
 
         Route::get('/',[ProductController::class, 'index']);
@@ -47,7 +45,35 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
         Route::post('/delete-product/{id}',[ProductController::class, 'deleteProduct']);
 
     });
+    
+    Route::group(['prefix'=>'blog','middleware'=>'auth'],function (){
 
+        Route::get('/',[BlogController::class, 'index']);
+        Route::post('/updateuserinfo/{id}',[BlogController::class, 'UpdateBlog']);
+        Route::get('/add-blog',[BlogController::class, 'addBlog']);
+        Route::post('/add-blog',[BlogController::class, 'addNewBlog']);
+        Route::get('/edit-blog/{id}',[BlogController::class, 'editBlog']);
+        Route::post('/edit-blog/{id}',[BlogController::class, 'updateBlog']);
+        Route::post('/delete-blog/{id}',[BlogController::class, 'deleteBlog']);
+
+    });
+
+});
+
+Route::group(['prefix'=>'seller','middleware'=>'auth'],function (){
+    Route::get('/',[UserController::class, 'index']);
+       
+    Route::group(['prefix'=>'products','middleware'=>'auth'],function (){
+
+        Route::get('/',[ProductController::class, 'index']);
+        Route::post('/updateuserinfo/{id}',[ProductController::class, 'UpdateProduct']);
+        Route::get('/add-product',[ProductController::class, 'addProduct']);
+        Route::post('/add-product',[ProductController::class, 'addNewProduct']);
+        Route::get('/edit-product/{id}',[ProductController::class, 'editProduct']);
+        Route::post('/edit-product/{id}',[ProductController::class, 'updateProduct']);
+        Route::post('/delete-product/{id}',[ProductController::class, 'deleteProduct']);
+
+    });
     
     Route::group(['prefix'=>'blog','middleware'=>'auth'],function (){
 

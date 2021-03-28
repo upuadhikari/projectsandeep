@@ -46,22 +46,29 @@ class ProductController extends Controller
             
             $product = new Products;
             $product->name = $request->name;
-            $product->picture = $request->picture;
             $product->detail = $request->detail;
             $product->price = $request->price;
             $product->discount = $request->discount;
             $product->status = $request->status;
             $product->u_id = Auth::user()->id;
 
-            if ($file = $request->file('picture')) {
-                $uplodaDesc = $this->uploadFiles($file, 'members', $product->id);
-                if(File::exists(storage_path('app/public/uploads/members/'). $product->picture)){
-                    File::delete(storage_path('app/public/uploads/members/'). $product->picture);
-                }
-                if ( $uplodaDesc) {
-                    $product->picture = $uplodaDesc['filename'];
-                }
+
+            if ($request->hasFile('picture')) {
+                $request->validate([
+                    'picture' =>'mimes:jpg,png,bmp',
+                ]);
+                $image = $request->file('picture');
+                $imgExt = $image->getClientOriginalExtension();
+                $fullname = time().".".$imgExt;
+                $result = $image->storeAs('images/product',$fullname);
             }
+
+        else{
+            $fullname = "avatar7.png";              
+        }
+
+
+        $product->picture = $fullname;
 
 
 

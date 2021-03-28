@@ -1,9 +1,9 @@
-@extends('admin.adminmaster')
+@extends('seller.sellermaster')
 @section('content')
 <div class="container">
 
       <form method="POST" 
-      action="{{url('admin/products/add-product/')}}" enctype="multipart/form-data">
+      action="{{url('seller/products/add-product/')}}">
           @csrf
           <div class="field">
         <label class="label">Name</label>
@@ -70,4 +70,8 @@
 
 </div>
 
+
+<script>
+
+</script>
 @stop

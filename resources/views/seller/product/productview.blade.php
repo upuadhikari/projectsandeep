@@ -1,4 +1,4 @@
-@extends('admin.adminmaster')
+@extends('seller.sellermaster')
 @section('content')
 <div class="container">
         @if (session('error'))
@@ -14,9 +14,9 @@
         @endif
 
         <div class="buttons" style="float: right;">
-            <a href="{{url('admin/products/add-product')}}" class="button is-primary">Add Product</a>
+            <a href="{{url('seller/products/add-product')}}" class="button is-primary">Add Product</a>
         </div>
-         <h2 style="color:blue">List of Products</h2>
+         <h2 style="color:blue">List of users</h2>
 
          <table border="1px" class="table">
              <tr>
@@ -31,19 +31,19 @@
              @foreach($data as $product)
                 <tr>
                     <td>{{$product->name}}</td>
-                    <td><img src="{{asset('/images/product/'.$product->picture)}}" width="50" height="40"></td>
+                    <td><img src="{{asset('/images/'.$product->picture)}}"></td>
                     <td>{{$product->detail}}</td>
                     <td>{{$product->price}}</td>
                     <td>
                         
-                        <form method="post" action="{{url('admin/products/delete-product/'.$product->id)}}"  >
-                            <a href="{{url('admin/products/edit-product/'.$product->id)}}" class="btn btn-primary">Edit </a>
+                        <form method="post" action="{{url('seller/products/delete-product/'.$product->id)}}"  >
+                            <a href="{{url('seller/products/edit-product/'.$product->id)}}" class="btn btn-primary">Edit </a>
                             @csrf
                             <button class="btn btn-danger" >Delete </button>
                         </form>
 
                     </td>
-                    <!-- <td><a href="{{url('admin/user/delete-user/'.$product->id)}}" class="btn btn-default">
+                    <!-- <td><a href="{{url('seller/user/delete-user/'.$product->id)}}" class="btn btn-default">
                         Delete
                     </a></td> -->
                 </tr>
