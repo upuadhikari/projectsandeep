@@ -16,11 +16,14 @@
 
     @if (request()->is('blog'))
     <link rel="stylesheet" href ="{{ asset('css/blog.css') }}">
+@elseif (request()->is('view-blog'))
+    <link rel="stylesheet" href ="{{ asset('css/view-blog.css') }}">
 @else
-<link rel="stylesheet" href ="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href ="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href ="{{ asset('css/profile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/loginregister.css') }}">
     <link rel="stylesheet" href ="{{ asset('css/product.css') }}">
+    
 @endif
 
     

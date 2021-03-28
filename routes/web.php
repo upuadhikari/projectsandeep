@@ -72,7 +72,6 @@ Route::group(['prefix'=>'homeproducts','middleware'=>'auth'],function (){
 });
 
 
-
 Route::get('dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -81,14 +80,18 @@ Route::get('profile', function () {
     return view('profile');
 })->middleware(['auth'])->name('profile');
 
-Route::get('products', function () {
-    return view('products');
+Route::get('products-detail', function () {
+    return view('products-detail');
 });
 
 
 Route::get('blog', function () {
     return view('blog');
 });
+
+Route::get('view-blog', function () {
+    return view('view-blog');
+})->middleware(['auth'])->name('view-blog');
 
 
 
