@@ -334,8 +334,12 @@ a {
     margin: 0;
 }
 
+#desc {
+    color: #999;
+}
+
 .product-details article>p {
-    color: #bbb;
+    color: #000;
     margin: 0.5em 0;
     font-size: 14px;
     line-height: 1.6;

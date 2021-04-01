@@ -43,6 +43,7 @@ action="{{url('admin/users/edit-user/'.$user->id)}}">
           <input class="input" type="text" placeholder="Text input" name="mobile" value="{{$user->mobile}}">
         </div>
       </div>
+      
 
 <!--   <div class="input-group">
   <div class="custom-file">

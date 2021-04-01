@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
   
   <!-- laravel css   -->
-  <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href ="{{ asset('css/bulmaf.css') }}">
 
   <!-- boostrap css cdn -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -40,58 +40,60 @@
           Users
         </a>
         <div class="navbar-dropdown is-boxed">
-          <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
-            Active
-          </a>
-          <a class="navbar-item" href="https://bulma.io/documentation/overview/modifiers/">
-            Inactive
-          </a>
-
-          
+          <a class="navbar-item" href="{{url('admin/users/add-user')}}">
+          Add User
+          </a>       
         </div>
       </div>
 
       <div class="navbar-item has-dropdown is-hoverable">
-      <a class="navbar-link" href="/admin/products">
+        <a class="navbar-link" href="/admin/products">
           Products
         </a>
         <div class="navbar-dropdown is-boxed">
-          <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
-            Active
+          <a class="navbar-item" href="{{url('admin/products/add-product')}}">
+            Add Product
           </a>
-          <a class="navbar-item" href="https://bulma.io/documentation/overview/modifiers/">
-            Inactive
-          </a>
-          
         </div>
       </div>
       
       <div class="navbar-item has-dropdown is-hoverable">
-      <a class="navbar-link" href="/admin/blog">
+      <a class="navbar-link" href="/admin/blogView">
           Blog
         </a>
         <div class="navbar-dropdown is-boxed">
-          <a class="navbar-item" href="https://bulma.io/documentation/overview/start/">
-            Active
-          </a>
-          <a class="navbar-item" href="https://bulma.io/documentation/overview/modifiers/">
-            Inactive
-          </a>
-          
-        </div>
-      </div>
-    </div>
-    </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="field is-grouped">
-        <img src="{{asset('/images/'.Auth::user()->picture)}}" width="100px" height="200">
-          
+          <a class="navbar-item" href="{{url('/admin/blogView/add-blog')}}">
+            Add Blog
+          </a>          
         </div>
       </div>
     </div>
   </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+      <div class="field is-grouped">
+        <img src="{{asset('/images/users/'.Auth::user()->picture)}}" width="100px" height="200"> 
+        </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link" href="{{ url('/profile') }}">
+      {{ Auth::user()->name }}
+        </a>
+        <div class="navbar-dropdown is-boxed">
+        <a class="navbar-item" href="{{ url('/') }}">
+          Home
+          </a>
+        <a class="navbar-item" href="{{ url('/profile') }}">
+          Profile
+          </a>  
+         <form action="{{ route('logout') }}" method="POST">
+         @csrf
+         <input type="submit" class="btn btn-light" value="logout">
+         </form>      
+        </div>
+      </div>
+      </div>
+    </div>
 </nav>
 
 @yield('content')

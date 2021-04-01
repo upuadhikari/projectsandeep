@@ -13,6 +13,14 @@
             </div>
         @endif
 
+        <form style="float: right; margin-left: 5px;" method="POST" 
+          action="{{url('admin/users/search-user/')}}" >
+              @csrf
+                  <input class="input is-normal" type="text" placeholder="Search..." style="width: 300px; " name="searched">
+                  <button class="btn btn-primary" >Search</button>
+
+        </form>
+
         <div class="buttons" style="float: right;">
             <a href="{{url('admin/users/add-user')}}" class="button is-primary">Add User</a>
         </div>
@@ -24,6 +32,8 @@
                  <th>Name</th>
                  <th>Full Name</th>
                  <th>Email</th>
+                 <th>Address</th>
+                 <th>Mobile</th>
                  <th>Action</th>
 
              </tr>
@@ -31,13 +41,15 @@
              @foreach($data as $user)
                 <tr>
                 <td>
-        <img src="{{asset('/images/'.$user->picture)}}" width="50px" height="40">
+        <img src="{{asset('/images/users/'.$user->picture)}}" width="50px" height="40">
 
                     
                 </td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->fullname}}</td>
                     <td>{{$user->email}}</td>
+                    <td>{{$user->address}}</td>
+                    <td>{{$user->mobile}}</td>
                     <td>
                         
                         <form method="post" action="{{url('admin/users/delete-user/'.$user->id)}}"  >
@@ -56,5 +68,6 @@
 
          </table>
         <!--  <p>Red background </p> -->
+        {{ $data->links("pagination::bootstrap-4") }} 
 </div>
  @stop

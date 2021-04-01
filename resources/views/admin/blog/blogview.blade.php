@@ -13,8 +13,16 @@
             </div>
         @endif
 
+        <form style="float: right; margin-left: 5px;" method="POST" 
+          action="{{url('admin/blogView/search-blog/')}}" >
+              @csrf
+                  <input class="input is-normal" type="text" placeholder="Search..." style="width: 300px; " name="searched">
+                  <button class="button is-primary" >Search</button>
+
+        </form>
+
         <div class="buttons" style="float: right;">
-            <a href="{{url('admin/blog/add-blog')}}" class="button is-primary">Add Blog</a>
+            <a href="{{url('/admin/blogView/add-blog')}}" class="button is-primary">Add Blog</a>
         </div>
          <h2 style="color:blue">List of blogs</h2>
 
@@ -34,8 +42,8 @@
                     <td>{{$blog->body}}</td>
                     <td>
                         
-                        <form method="post" action="{{url('admin/blog/delete-blog/'.$blog->id)}}"  >
-                            <a href="{{url('admin/blog/edit-blog/'.$blog->id)}}" class="btn btn-primary">Edit </a>
+                        <form method="post" action="{{url('/admin/blogView/delete-blog/'.$blog->id)}}"  >
+                            <a href="{{url('/admin/blogView/edit-blog/'.$blog->id)}}" class="btn btn-primary">Edit </a>
                             @csrf
                             <button class="btn btn-danger" >Delete </button>
                         </form>
@@ -50,5 +58,6 @@
 
          </table>
         <!--  <p>Red background </p> -->
+        {{ $data->links("pagination::bootstrap-4") }}
 </div>
  @stop

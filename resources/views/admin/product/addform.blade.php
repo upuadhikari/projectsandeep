@@ -12,12 +12,15 @@
         </div>
       </div>
 
-        <div class="input-group">
-  <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="picture">
-    <label class="custom-file-label custom-file" for="inputGroupFile04">Choose file</label>
-  </div>
-</div>
+      <div class="field">
+        <label class="label">Upload Pictures</label>
+        <div class="control">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="picture">
+          <label class="custom-file-label custom-file" for="inputGroupFile04">Choose file</label>
+        </div>
+        </div>
+      </div>
 
       <div class="field">
         <label class="label">Detail</label>
@@ -29,16 +32,20 @@
       <div class="field">
         <label class="label">Price</label>
         <div class="control">
-          <input class="input" type="number" placeholder="Text input" name ="price">
+          <input id="price" class="input" type="text" placeholder="Text input" name ="price" onkeyup="fun()">
         </div>
       </div>
 
       <div class="field">
         <label class="label">Discount</label>
         <div class="control">
-          <input class="input" type="number" placeholder="Text input" name ="discount">
+        <input class="contactform-input input" type="text" id="contactform-member" placeholder="Member" name="member" value="" onkeyup="fun()" /> 
         </div>
       </div>
+
+      <label class="contactform-label" for="contactform-member">
+        
+        <span id="result"></span>
 
 
 
@@ -69,5 +76,16 @@
   </form>
 
 </div>
+<script>
+
+function fun(){
+var price = document.getElementById("price").value;
+var member = document.getElementById("contactform-member").value;
+var calculate = price - (price * member / 100);
+document.getElementById("result").innerHTML = "Total discount= Rs. "+ calculate;
+  }
+
+</script>
+
 
 @stop

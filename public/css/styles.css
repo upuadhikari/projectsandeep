@@ -211,9 +211,31 @@ hr {
     padding: 15px 0 0 0;
 }
 
+.pagination {
+    justify-content: center;
+}
+
+input.btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 8px 10px;
+    margin-top: 0px;
+}
+
+.btn-light:hover {
+    background: transparent !important;
+    border: none !important;
+    color: #fff !important;
+}
+
 .card-text {
     text-align: justify;
     text-justify: inter-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .pagination {

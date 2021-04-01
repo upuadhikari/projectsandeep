@@ -25,7 +25,7 @@ class UserController extends Controller
         });
     }
     public function index(Request $request){
-        $data= User::orderBy('id','desc')->where('status',1)->get();
+        $data= User::orderBy('id','desc')->where('status', 1)->paginate(5);        
         return view('admin.user.userview',compact('data'));
 	    //return view('userview', [‘users' => 'data']);
 	    //return view('userview')
@@ -165,13 +165,21 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->status = 3;
         $result = $user->save();
-
-        $data= User::orderBy('id','desc')->where('status',1)->get();
+        
         if ($result) {
-        	return view('admin.user.userview',compact('data'));
+        	return redirect('admin/users/')->with('success', 'User deleted Successfully.');
         }
         
     }
+
+    public function searchuserForAdmin(Request $request){
+
+        $searched=$request->searched;
+        $data= User::Where('name','Like',"%$searched%")->orWhere('fullname','Like',"%$searched%")->orWhere('email','Like',"%$searched%")->orWhere('mobile','Like',"%$searched%")->get();
+        return view('admin.user.search',compact('data','searched'));
+    }
+
+    
 
 }
 

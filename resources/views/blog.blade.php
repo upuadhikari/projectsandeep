@@ -40,16 +40,21 @@
 
     <div class="container" id="contain">
         <div id="fh5co-portfolio">
+        @foreach ($blogs as $blog)
             <div class="fh5co-portfolio-item ">
-                <div class="fh5co-portfolio-figure animate-box" style="background-image: url(images/pic_1.jpg);"></div>
+                <div class="fh5co-portfolio-figure animate-box">
+                <img src="{{asset('/images/'.$blog->picture)}}" width="700px">
+                </div>
                 <div class="fh5co-portfolio-description">
-                    <h1>Project Title</h1>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named
-                        Duden flows by their place and supplies it with the necessary regelialia.</p>
-                    <p><a href="/view-blog" class="btn btn-primary">Learn More</a></p>
+                    <h1>{{$blog->title}}</h1>
+                    <p>{{$blog->body}}</p>
+                    <p><a href="{{ url('/view-blog/'.$blog->id) }}" class="btn btn-primary">Learn More</a></p>
                 </div>
             </div>
-            <div class="fh5co-portfolio-item fh5co-img-right">
+        @endforeach
+
+
+            <!-- <div class="fh5co-portfolio-item fh5co-img-right">
                 <div class="fh5co-portfolio-figure animate-box" style="background-image: url(images/pic_2.jpg);"></div>
                 <div class="fh5co-portfolio-description">
                     <h1>Project Title</h1>
@@ -75,7 +80,7 @@
                         Duden flows by their place and supplies it with the necessary regelialia.</p>
                     <p><a href="#" class="btn btn-primary">Learn More</a></p>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 

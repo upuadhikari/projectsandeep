@@ -5,6 +5,7 @@ Use App\Http\Controllers\UserController;
 Use App\Http\Controllers\ProductController;
 Use App\Http\Controllers\BlogController;
 Use App\Http\Controllers\FrontproductController;
+Use App\Http\Controllers\FrontblogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ Use App\Http\Controllers\FrontproductController;
 
 Route::get('/',[FrontproductController::class, 'index']);
 
+// Route::get('/blog',[FrontblogController::class, 'index']);
+
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
     Route::get('/',[UserController::class, 'index']);
        
@@ -27,6 +30,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
         Route::get('/',[UserController::class, 'index']);
         Route::post('/updateuserinfo/{id}',[UserController::class, 'UpdateUser']);
         Route::get('/add-user',[UserController::class, 'addUser']);
+        Route::post('/search-user',[UserController::class, 'searchuserForAdmin']);
         Route::post('/add-user',[UserController::class, 'addNewUser']);
         Route::get('/edit-user/{id}',[UserController::class, 'editUser']);
         Route::post('/edit-user/{id}',[UserController::class, 'updateUser']);
@@ -39,18 +43,20 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
         Route::get('/',[ProductController::class, 'index']);
         Route::post('/updateuserinfo/{id}',[ProductController::class, 'UpdateProduct']);
         Route::get('/add-product',[ProductController::class, 'addProduct']);
+        Route::post('/search-product',[ProductController::class, 'searchproductForAdmin']);
         Route::post('/add-product',[ProductController::class, 'addNewProduct']);
+        Route::post('/delete/{id}',[ProductController::class, 'deleteProduct']);                                                                                                            
         Route::get('/edit-product/{id}',[ProductController::class, 'editProduct']);
         Route::post('/edit-product/{id}',[ProductController::class, 'updateProduct']);
-        Route::post('/delete-product/{id}',[ProductController::class, 'deleteProduct']);
 
     });
     
-    Route::group(['prefix'=>'blog','middleware'=>'auth'],function (){
+    Route::group(['prefix'=>'blogView','middleware'=>'auth'],function (){
 
         Route::get('/',[BlogController::class, 'index']);
         Route::post('/updateuserinfo/{id}',[BlogController::class, 'UpdateBlog']);
         Route::get('/add-blog',[BlogController::class, 'addBlog']);
+        Route::post('/search-blog',[BlogController::class, 'searchblogForAdmin']);
         Route::post('/add-blog',[BlogController::class, 'addNewBlog']);
         Route::get('/edit-blog/{id}',[BlogController::class, 'editBlog']);
         Route::post('/edit-blog/{id}',[BlogController::class, 'updateBlog']);
@@ -60,36 +66,7 @@ Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
 
 });
 
-Route::group(['prefix'=>'seller','middleware'=>'auth'],function (){
-    Route::get('/',[UserController::class, 'index']);
-       
-    Route::group(['prefix'=>'products','middleware'=>'auth'],function (){
-
-        Route::get('/',[ProductController::class, 'index']);
-        Route::post('/updateuserinfo/{id}',[ProductController::class, 'UpdateProduct']);
-        Route::get('/add-product',[ProductController::class, 'addProduct']);
-        Route::post('/add-product',[ProductController::class, 'addNewProduct']);
-        Route::get('/edit-product/{id}',[ProductController::class, 'editProduct']);
-        Route::post('/edit-product/{id}',[ProductController::class, 'updateProduct']);
-        Route::post('/delete-product/{id}',[ProductController::class, 'deleteProduct']);
-
-    });
-    
-    Route::group(['prefix'=>'blog','middleware'=>'auth'],function (){
-
-        Route::get('/',[BlogController::class, 'index']);
-        Route::post('/updateuserinfo/{id}',[BlogController::class, 'UpdateBlog']);
-        Route::get('/add-blog',[BlogController::class, 'addBlog']);
-        Route::post('/add-blog',[BlogController::class, 'addNewBlog']);
-        Route::get('/edit-blog/{id}',[BlogController::class, 'editBlog']);
-        Route::post('/edit-blog/{id}',[BlogController::class, 'updateBlog']);
-        Route::post('/delete-blog/{id}',[BlogController::class, 'deleteBlog']);
-
-    });
-
-});
-
-Route::group(['prefix'=>'homeproducts','middleware'=>'auth'],function (){
+Route::group(['prefix'=>'homeproducts'],function (){
 
     Route::get('/',[FrontproductController::class, 'index']);
     Route::get('/view-product/{id}',[FrontproductController::class, 'viewProduct']);
@@ -98,9 +75,11 @@ Route::group(['prefix'=>'homeproducts','middleware'=>'auth'],function (){
 });
 
 
-Route::get('dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+
+    Route::get('/blog',[FrontblogController::class, 'index'])->middleware(['auth']);
+    Route::get('/view-blog/{id}',[FrontblogController::class, 'viewBlog'])->middleware(['auth']);
+    
+
 
 Route::get('profile', function () {
     return view('profile');
@@ -111,17 +90,6 @@ Route::get('products-detail', function () {
 });
 
 
-Route::get('blog', function () {
-    return view('blog');
-});
-
-Route::get('view-blog', function () {
-    return view('view-blog');
-})->middleware(['auth'])->name('view-blog');
-
-
-
-Route::get('logout', '\App\Http\Controllers\Auth\RegistereduserController@logout');
 
 
 require __DIR__.'/auth.php';

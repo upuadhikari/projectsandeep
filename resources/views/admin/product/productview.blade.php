@@ -13,6 +13,14 @@
             </div>
         @endif
 
+        <form style="float: right; margin-left: 5px;" method="POST" 
+          action="{{url('admin/products/search-product/')}}" >
+              @csrf
+                  <input class="input is-normal" type="text" placeholder="Search..." style="width: 300px; " name="searched">
+                  <button class="button is-primary" >Search</button>
+
+        </form>
+
         <div class="buttons" style="float: right;">
             <a href="{{url('admin/products/add-product')}}" class="button is-primary">Add Product</a>
         </div>
@@ -52,5 +60,6 @@
 
          </table>
         <!--  <p>Red background </p> -->
+        {{ $data->links("pagination::bootstrap-4") }} 
 </div>
  @stop

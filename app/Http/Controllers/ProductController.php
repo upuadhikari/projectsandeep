@@ -21,7 +21,8 @@ class ProductController extends Controller
         });
     }
     public function index(Request $request){
-        $data= Products::orderBy('id','desc')->get();
+
+        $data= Products::orderBy('id','desc')->paginate(2);
         return view('admin.product.productview',compact('data'));
 	    //return view('userview', [‘users' => 'data']);
 	    //return view('userview')
@@ -132,4 +133,12 @@ class ProductController extends Controller
         }
         
     }
+
+    public function searchproductForAdmin(Request $request){
+
+        $searched=$request->searched;
+        $data= Products::Where('name','Like',"%$searched%")->orWhere('price','Like',"%$searched%")->get();
+        return view('admin.product.search',compact('data','searched'));
+    }
+
 }

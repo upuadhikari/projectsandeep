@@ -38,7 +38,7 @@
                 <div class="card text-center mb-2" style="width: 18rem;">
                     <!-- <span class="card-notify-badge">Special</span>
                     <span class="card-notify-total">5</span> -->
-                    <img src="images/h1.jpg" class="card-img-top" alt="...">
+                    <img src="{{asset('/images/product/'.$product->picture)}}" alt=""  width="300px" height="auto">
                     <div class="card-body">
                         <h5 class="card-title" id="breed-name">{{$product->name}}</h5>
                         <p class="card-text">{{$product->detail}}</p>
@@ -48,10 +48,12 @@
             </div>
             @endforeach
         </div>
-    </div>-
+        {{ $products->links("pagination::bootstrap-4") }} 
+    </div> 
     <hr>
-   
-    <nav aria-label="Page navigation example">
+
+
+    <!-- <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <li class="page-item disabled">
                 <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -63,7 +65,7 @@
                 <a class="page-link" href="#">Next</a>
             </li>
         </ul>
-    </nav>
+    </nav> -->
 
 
     @include('footer')

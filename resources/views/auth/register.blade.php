@@ -2,7 +2,6 @@
 
 
 
-
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
@@ -17,7 +16,7 @@
             <div class="signup-content">
                 <div class="signup-form">
                     <h2 class="form-title">Sign up</h2>
-                    <form method="POST" class="register-form" id="register-form" action="{{ route('register') }}">
+                    <form method="POST" class="register-form" id="register-form" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                         <x-label for="name" />
@@ -43,7 +42,6 @@
                         <div class="form-group">
                         <x-label for="password" />
                         <x-input id="password"  type="password" name="password" required placeholder="Password" autocomplete="new-password" />
-                            <!-- <input type="password" name="pass" id="pass" placeholder="Password" /> -->
                         </div>
                         <div class="form-group">
                         <x-label for="password_confirmation" />
@@ -54,13 +52,16 @@
                         <div class="form-group">
                         <x-label for="address" />
                         <x-input id="name"  type="text" name="address" required placeholder="Address" />
-                            <!-- <input type="password" name="pass" id="pass" placeholder="Password" /> -->
                         </div>
-
+                        
                         <div class="form-group">
                         <x-label for="mobile" />
                         <x-input id="name"  type="number" name="mobile" required placeholder="mobile" />
-                            <!-- <input type="password" name="pass" id="pass" placeholder="Password" /> -->
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1"></label>
+                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="picture">
                         </div>
 
                         <div class="form-group form-button">

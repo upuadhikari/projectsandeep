@@ -4,14 +4,13 @@
             <div class="row">
                 <div class="item text-center">
                     <div class="title pt-3 pb-3">
-                        <h1>Blog Title</h1>
+                        <h1>{{$blog->title}}</h1>
                     </div>
                     <div class="title-image">
-                        <img src="images/blog-1.jpg" class="img-fluid w-75" alt="...">
+                        <img src="{{asset('/images/'.$blog->picture)}}" class="img-fluid w-75" alt="...">
                     </div>
                     <div class="title-description d-flex justify-content-center mt-3 text-center pb-4">
-                        <p class="w-75">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river
-                            named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                        <p class="w-75">{{$blog->body}}</p>
                     </div>
                 </div>
             </div>

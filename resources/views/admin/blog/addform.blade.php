@@ -3,7 +3,7 @@
 <div class="container">
 
       <form method="POST" 
-      action="{{url('admin/blog/add-blog/')}}">
+      action="{{url('/admin/blogView/add-blog/')}}" enctype="multipart/form-data">
           @csrf
 
           <div class="input-group">

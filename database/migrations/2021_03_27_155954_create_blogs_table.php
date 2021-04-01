@@ -17,7 +17,7 @@ class CreateBlogsTable extends Migration
             $table->increments('id');
             $table->string('picture');
             $table->string('title');
-            $table->string('body');
+            $table->string('body',5000);
             $table->integer('u_id')->unsigned();
             $table->foreign('u_id')->references('id')->on('users');
             $table->boolean('status')->default(0);

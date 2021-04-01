@@ -14,7 +14,7 @@
     @endif
 
   <form method="POST" 
-action="{{url('admin/blogs/edit-blog/'.$blog->id)}}">
+action="{{url('/admin/blogView/edit-blog/'.$blog->id)}}">
           @csrf
           <div class="field">
         <label class="label">Name</label>

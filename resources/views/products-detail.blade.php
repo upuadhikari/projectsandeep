@@ -3,7 +3,7 @@
 
 <div class="container container-row" id="product">
         <div class="product-image">
-            <img src="images/siberian.png" alt="" class="product-pic">
+            <img src="{{asset('/images/product/'.$product->picture)}}" alt="" class="product-pic" width="300px" height="auto">
         </div>
 
         <div class="product-details">
@@ -20,12 +20,12 @@
                 </div>
                 <h1 class="title">{{$product->name}}</h1>
                 <div class="price">
-                    <span class="current">{{$product->price}}</span>
+                    <span class="current">Rs. {{$product->price}}</span>
                 </div>
             </header>
             <article>
-                <h5>Description</h5>
-                <p>{{$product->name}}</p>
+                <h5 id="desc">Description</h5>
+                <p>{{$product->detail}}</p>
             </article>
         </div>
     </div>

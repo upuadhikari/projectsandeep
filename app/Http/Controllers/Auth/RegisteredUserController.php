@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\File;
 
 class RegisteredUserController extends Controller
 {
@@ -32,13 +33,22 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => 'required|string|max:255',
             'fullname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|confirmed|min:8',
-        ]);
-
+            'picture' =>'mimes:jpg,png,bmp',
+            ]);
+            $fullname = "user.png";
+        if ($request->hasFile('picture')) {         
+            $image = $request->file('picture');
+            $imgExt = $image->getClientOriginalExtension();
+            $fullname = time().".".$imgExt;
+            $result = $image->storeAs('images/users/',$fullname);
+        }
+        
         Auth::login($user = User::create([
             'name' => $request->name,
             'fullname' => $request->fullname,
@@ -46,6 +56,9 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'address' => $request->address,
             'mobile' => $request->mobile,
+            'picture' => $fullname,
+
+            
         ]));
 
         event(new Registered($user));
@@ -53,8 +66,4 @@ class RegisteredUserController extends Controller
         return redirect(RouteServiceProvider::HOME);
     }
 
-    public function logout(Request $request) {
-        Auth::logout();
-        return redirect('/login');
-      }
 }

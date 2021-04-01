@@ -24,14 +24,15 @@
 
       <div class="field">
         <label class="label">Email</label>
-        <div class="control has-icons-left has-icons-right">
-          <input class="input is-danger" type="email" placeholder="Email input" value="" name="email">
-          <span class="icon is-small is-left">
-            <i class="fas fa-envelope"></i>
-          </span>
-          <span class="icon is-small is-right">
-            <i class="fas fa-exclamation-triangle"></i>
-          </span>
+        <div class="control">
+          <input class="input" type="email" placeholder="Email input" value="" name="email">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Address</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Address input" value="" name="Address">
         </div>
       </div>
 
@@ -42,12 +43,15 @@
         </div>
       </div>
 
-          <div class="input-group">
-          <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile04" name="picture">
+      <div class="field">
+        <label class="label">Upload Pictures</label>
+        <div class="control">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="picture">
           <label class="custom-file-label custom-file" for="inputGroupFile04">Choose file</label>
-          </div>
-          </div>
+        </div>
+        </div>
+      </div>
 
       <div class="field">
         <label class="label">Status:</label>

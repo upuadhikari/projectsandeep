@@ -11,7 +11,6 @@
 
         <!-- extra css -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 
 
     @if (request()->is('blog'))
@@ -61,9 +60,10 @@
             @endif -->
         
         @if (Route::has('login'))
+        
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container">
-                    <a class="navbar-brand" href="home.html">
+                    <a class="navbar-brand" href="/">
                         <img class="img-fluid sitelogo" src="{{asset('images/logo.png')}}" alt="" width="200" height="60">
                     </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,9 +73,13 @@
                 <div class="navbar-nav">
                 <a class="nav-link active text-white px-3" aria-current="page" href="{{ url('/') }}">Home</a>
                     @auth
-                <a class="nav-link text-white px-3" href="{{ url('/dashboard') }}">Dashboard</a>                
-                <a class="nav-link text-white px-3" href="{{ url('/profile') }}">{{ Auth::user()->name }} profile</a>
-                <a class="nav-link text-white px-3" href="{{ route('logout') }}">{{ __('Log out') }}</a>
+                <a class="nav-link text-white px-3" href="{{ url('/admin') }}">Admin</a>                
+                <a class="nav-link text-white px-3" href="{{ url('/profile') }}">{{ Auth::user()->name }}</a>
+                
+                <form action="{{ route('logout') }}" method="POST">
+         @csrf
+         <input type="submit" class="btn btn-light" value="logout">
+         </form> 
                     @else
                 <a class="nav-link text-white px-3" href="{{ route('login') }}">Login</a>
                     @if (Route::has('register'))

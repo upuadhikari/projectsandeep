@@ -284,3 +284,7 @@ hr {
     padding-left: 0px;
     padding-right: 0px;
 }
+
+.pagination {
+    justify-content: center;
+}
