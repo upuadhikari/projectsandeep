@@ -3,7 +3,7 @@
 
 <div class="container container-row" id="product">
         <div class="product-image">
-            <img src="{{asset('/images/product/'.$product->picture)}}" alt="" class="product-pic" width="300px" height="auto">
+            <img src="{{asset('/images/product/'.$product->picture)}}" alt="" class="product-pic">
         </div>
 
         <div class="product-details">

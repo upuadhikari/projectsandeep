@@ -5,7 +5,7 @@
         <div class="main-body">
             <div class="row gutters-sm">
                 <div class="col-md-4 mb-3">
-                    <div class="card">
+                    <div class="card" id="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
                                 <img src="{{asset('/images/users/'.Auth::user()->picture)}}" alt="image here" class="rounded-circle" width="150">
@@ -18,18 +18,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8 my-auto" id="right">
                     <div class="card mb-3">
-                        <div class="card-body">
-                            <!-- <div class="row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Username</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    Your username
-                                </div>
-                            </div>
-                            <hr> -->
+                        <div class="card-body" id="right-box">
                             <div class="row">
                                 <div class="col-sm-3">
                                     <h6 class="mb-0">Full Name</h6>

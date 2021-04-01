@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class FrontproductController extends Controller
 {
     public function index(){
-        $products = Products::paginate(4);
+        $products = Products::paginate(8);
         return view('welcome',compact('products'));
     }
 

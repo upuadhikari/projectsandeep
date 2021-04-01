@@ -185,6 +185,17 @@ hr {
     font-size: 18px;
 }
 
+#ima {
+    margin-top: 5px;
+    width: 80%;
+    height: 50% !important;
+}
+
+#card {
+    border: none;
+    box-shadow: 0 0 10px rgba(193, 189, 189, 0.69);
+}
+
 .card-notify-badge {
     position: absolute;
     left: -10px;

@@ -34,15 +34,15 @@
     <div class="container">
         <div class="row mx-auto">
             @foreach ($products as $product)
-            <div class="col-sm-3 d-flex justify-content-center justify-content-md-start">
-                <div class="card text-center mb-2" style="width: 18rem;">
+            <div class="col-sm-3 d-flex justify-content-center">
+                <div class="card text-center mb-4" id="card" style="width: 18rem;">
                     <!-- <span class="card-notify-badge">Special</span>
                     <span class="card-notify-total">5</span> -->
-                    <img src="{{asset('/images/product/'.$product->picture)}}" alt=""  width="300px" height="auto">
+                    <img class="img-fluid mx-auto" id="ima" src="{{asset('/images/product/'.$product->picture)}}" alt="">
                     <div class="card-body">
                         <h5 class="card-title" id="breed-name">{{$product->name}}</h5>
                         <p class="card-text">{{$product->detail}}</p>
-                        <a href="{{ url('/homeproducts/view-product/'.$product->id) }}" class="btn btn-primary">More Details</a>
+                        <a href="{{ url('/homeproducts/view-product/'.$product->id) }}" id="more-details" class="btn btn-primary">More Details</a>
                     </div>
                 </div>
             </div>
