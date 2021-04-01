@@ -8,7 +8,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="images/avatar7.png" alt="image here" class="rounded-circle" width="150">
+                                <img src="{{asset('/images/users/'.Auth::user()->picture)}}" alt="image here" class="rounded-circle" width="150">
                                 <div class="mt-3">
                                     <h4>{{ Auth::user()->name }}</h4>
                                     <!-- <p class="text-secondary mb-1">{{ Auth::user()->role }}</p> -->
