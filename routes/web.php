@@ -22,7 +22,7 @@ Route::get('/',[FrontproductController::class, 'index']);
 
 // Route::get('/blog',[FrontblogController::class, 'index']);
 
-Route::group(['prefix'=>'admin','middleware'=>'auth'],function (){
+Route::group(['prefix'=>'admin','middleware'=>'admin'],function (){
     Route::get('/',[UserController::class, 'index']);
        
     Route::group(['prefix'=>'users','middleware'=>'auth'],function (){

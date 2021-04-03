@@ -25,7 +25,7 @@ class UserController extends Controller
         });
     }
     public function index(Request $request){
-        $data= User::orderBy('id','desc')->where('status', 1)->paginate(5);        
+        $data= User::orderBy('id','desc')->paginate(5);        
         return view('admin.user.userview',compact('data'));
 	    //return view('userview', [‘users' => 'data']);
 	    //return view('userview')
@@ -44,6 +44,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
+            'address' => 'required',
         ]);
 
 
@@ -56,6 +57,7 @@ class UserController extends Controller
                 $user->name = $request->name;
                 $user->fullname = $request->fullname;
                 $user->email = $request->email;
+                $user->address = $request->address;
                 $user->mobile = $request->mobile;
                 $user->picture = $request->picture;
                 $user->role = $request->role;
@@ -69,12 +71,12 @@ class UserController extends Controller
                     $image = $request->file('picture');
                     $imgExt = $image->getClientOriginalExtension();
                     $fullname = time().".".$imgExt;
-                    $result = $image->storeAs('images',$fullname);
+                    $result = $image->storeAs('images/users/',$fullname);
                 }
 
             } 
             else{
-                $fullname = "avatar7.png";              
+                $fullname = "user.png";              
             }
 
             $user->picture = $fullname;
@@ -87,6 +89,7 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->fullname = $request->fullname;
             $user->email = $request->email;
+            $user->address = $request->address;
             $user->mobile = $request->mobile;
             $user->picture = $request->picture;
             $user->role = $request->role;
@@ -100,12 +103,12 @@ class UserController extends Controller
                 $image = $request->file('picture');
                 $imgExt = $image->getClientOriginalExtension();
                 $fullname = time().".".$imgExt;
-                $result = $image->storeAs('images',$fullname);
+                $result = $image->storeAs('images/users/',$fullname);
             }
 
  
         else{
-            $fullname = "avatar7.png";              
+            $fullname = "user.png";              
         }
 
         $user->picture = $fullname;

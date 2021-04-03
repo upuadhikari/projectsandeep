@@ -75,13 +75,26 @@
                 <div class="navbar-nav">
                 <a class="nav-link active text-white px-3" aria-current="page" href="{{ url('/') }}">Home</a>
                     @auth
-                <a class="nav-link text-white px-3" href="{{ url('/admin') }}">Admin</a>                
-                <a class="nav-link text-white px-3" href="{{ url('/profile') }}">{{ Auth::user()->name }}</a>
-                
-                <form action="{{ route('logout') }}" method="POST">
-         @csrf
-         <input type="submit" class="btn btn-light" value="logout">
-         </form> 
+                    @if( Auth::user()->role == 3)
+                        <a class="nav-link text-white px-3" href="{{ url('/admin') }}">Admin</a>
+                        <a class="nav-link text-white px-3" href="/blog">Blog</a>                  
+                    @endif
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white px-3" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li class="text-center"><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
+                        <li>
+                                <form class="d-grid" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <input type="submit" class="btn btn-light" id="btn-of-blog" value="logout">
+                                </form>
+                            </li>
+
+                        </ul>
+                    </li>
                     @else
                 <a class="nav-link text-white px-3" href="{{ route('login') }}">Login</a>
                     @if (Route::has('register'))
@@ -94,3 +107,9 @@
         </div>
     </nav>
     @endif
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

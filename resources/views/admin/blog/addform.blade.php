@@ -1,62 +1,43 @@
 @extends('admin.adminmaster')
 @section('content')
-<div class="container">
-
-      <form method="POST" 
-      action="{{url('/admin/blogView/add-blog/')}}" enctype="multipart/form-data">
-          @csrf
-
-          <div class="input-group">
-  
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md-2 mx-auto">
+  <h3 class="text-secondary border border-secondary text-center py-3">Add Blog</h3>
+    </div>
+  </div>
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <form method="POST" action="{{url('/admin/blogView/add-blog/')}}" enctype="multipart/form-data">
+            @csrf
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                    <input class="input" type="text" placeholder="title" name ="title">
+                  </div>
+                    <div class="col-sm-6">
+                    <input class="input" type="file" name="picture" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                    <input class="input" type="text" placeholder="Blog Body" name ="body">
+                    </div>
+                    <div class="col-sm-4">
+                    <select name="status" class="form-select">
+                    <option selected>Select Status</option>
+                      <option value="1">Active</option>
+                      <option value="0">Inactive</option>
+                    </select>
+                    </div>                    
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-8"></div>
+                    <div class="col-sm-4 mx-auto my-auto d-flex justify-content-end">
+                      <button type="submit" class="btn btn-primary px-5 py-3">Add Blog</button>
+                    </div>                   
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-
-<div class="field">
-        <label class="label">Upload Pictures</label>
-        <div class="control">
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="picture">
-          <label class="custom-file-label custom-file" for="inputGroupFile04">Choose file</label>
-        </div>
-        </div>
-      </div>
-
-
-
-          <div class="field">
-        <label class="label">Title</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Text input" name ="title">
-        </div>
-      </div>
-
-        
-
-      <div class="field">
-        <label class="label">Detail</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Text input" name ="body">
-        </div>
-      </div>
-
-
-
-
-      <div class="field">
-        <label class="label">Status:</label>
-        <div class="control">
-          <div class="select">
-            <select name="status">
-              <option value="1">Active</option>
-              <option value="0">Inactive</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-
-    <button class="button is-success">Submit</button>
-  </form>
-
-</div>
-
 @stop

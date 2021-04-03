@@ -13,53 +13,54 @@
             </div>
         @endif
 
-        <form style="float: right; margin-left: 5px;" method="POST" 
-          action="{{url('admin/products/search-product/')}}" >
-              @csrf
-                  <input class="input is-normal" type="text" placeholder="Search..." style="width: 300px; " name="searched">
-                  <button class="button is-primary" >Search</button>
-
-        </form>
-
-        <div class="buttons" style="float: right;">
-            <a href="{{url('admin/products/add-product')}}" class="button is-primary">Add Product</a>
+        <div class="container" id="bodyContainer">
+        <div class="row  my-3">
+            <div class="col-md-4 ">
+                <h2 id="lis">List of Products</h2>
+            </div>
+            <div class="col-md-4 my-auto">
+                <form class="d-flex "  action="{{url('admin/products/search-product/')}}" method="POST">
+                    @csrf
+                    <input class="form-control" type="search" placeholder="You looking for?" aria-label="Search" name="searched">
+                    <button class="btn btn-outline-success ms-1" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="col-md-4 d-flex justify-content-end">
+            <button class="btn btn-primary ms-1" type="submit"><a href="{{url('admin/products/add-product')}}" class="btn text-white" type="submit">Add Product</a></button>
+            
+            </div>
         </div>
-         <h2 style="color:blue">List of Products</h2>
-
-         <table border="1px" class="table">
-             <tr>
-                <th>Name</th>
+        <table class="table table-hover text-center" id="t-able">
+           
+                <thead>
+                <tr>
+               <th>Name</th>
                 <th>Picture</th>
                 <th>Detail</th>
                 <th>Price</th>
                 <th>Action</th>
 
-             </tr>
+                </tr>
+                </thead>
 
-             @foreach($data as $product)
-                <tr>
-                    <td>{{$product->name}}</td>
+            @foreach($data as $product)
+            <tr class="p-5">
+            <td>{{$product->name}}</td>
                     <td><img src="{{asset('/images/product/'.$product->picture)}}" width="50" height="40"></td>
-                    <td>{{$product->detail}}</td>
+                    <td class="text-justify w-50">{{$product->detail}}</td>
                     <td>{{$product->price}}</td>
                     <td>
-                        
                         <form method="post" action="{{url('admin/products/delete-product/'.$product->id)}}"  >
-                            <a href="{{url('admin/products/edit-product/'.$product->id)}}" class="btn btn-primary">Edit </a>
+                            <a href="{{url('admin/products/edit-product/'.$product->id)}}" class="btn btn-success me-1">Edit </a>
                             @csrf
                             <button class="btn btn-danger" >Delete </button>
                         </form>
 
                     </td>
-                    <!-- <td><a href="{{url('admin/user/delete-user/'.$product->id)}}" class="btn btn-default">
-                        Delete
-                    </a></td> -->
-                </tr>
-             @endforeach
+            </tr>
+            @endforeach
+        </table>
+        {{ $data->links("pagination::bootstrap-4") }}
+    </div>
+    @stop
 
-
-         </table>
-        <!--  <p>Red background </p> -->
-        {{ $data->links("pagination::bootstrap-4") }} 
-</div>
- @stop

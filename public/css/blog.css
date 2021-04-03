@@ -179,6 +179,23 @@ body {
     color: #fff;
 }
 
+#btn-of-blog {
+    background-color: inherit;
+    border: none;
+    color: #000;
+}
+
+#btn-of-blog:hover {
+    background-color: inherit;
+    border: none;
+    color: #000;
+}
+
+.dropdown-item:hover{
+    background-color: inherit
+}
+
+
 #fh5co-main {
     clear: both;
     padding-top: 3em;
@@ -396,9 +413,6 @@ pre {
 /* Buttons */
 
 .btn {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
@@ -407,16 +421,6 @@ pre {
     padding-left: 20px;
     padding-right: 20px;
     margin-right: 10px;
-}
-
-.btn:hover,
-.btn:focus,
-.btn:active {
-    background: #fff !important;
-    color: #444 !important;
-    border: 2px solid #444 !important;
-    box-shadow: none;
-    outline: none;
 }
 
 .btn-outline {

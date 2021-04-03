@@ -7,8 +7,6 @@
                         <li class="list-inline-item"><a href="/">Home</a></li>
                         @auth
                         <li class="list-inline-item"><a href="{{ url('/profile') }}">Profile</a></li>
-                        <li class="list-inline-item"><a href="{{ route('logout') }}">{{ __('Log out') }}</a></li>
-
                         @else
                         <li class="list-inline-item"><a href="{{ route('login') }}">Login</a></li>
                         @if (Route::has('register'))

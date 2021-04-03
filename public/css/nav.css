@@ -170,105 +170,18 @@ body {
     color: #fff;
 }
 
-
-/* #cardoflist{
-margin-top: 10px;
-} */
-
-hr {
-    opacity: 0;
-}
-
-#btn-of-blog {
+.btn-light {
     background-color: inherit;
     border: none;
-    color: #000;
 }
 
-#btn-of-blog:hover {
+.btn-light:hover {
     background-color: inherit;
     border: none;
-    color: #000;
 }
 
 .dropdown-item:hover{
     background-color: inherit
-}
-
-
-#breed-name {
-    color: #fe6168;
-    font-weight: 700;
-    font-size: 18px;
-}
-
-#ima {
-    margin-top: 5px;
-    width: 80%;
-    height: 50% !important;
-}
-
-#card {
-    border: none;
-    box-shadow: 0 0 10px rgba(193, 189, 189, 0.69);
-}
-
-.card-notify-badge {
-    position: absolute;
-    left: -10px;
-    top: -20px;
-    background: #f20095;
-    text-align: center;
-    border-radius: 30px 30px 30px 30px;
-    color: rgb(255, 255, 255);
-    padding: 5px 10px;
-    font-size: 14px;
-}
-
-.card-notify-total {
-    position: absolute;
-    right: -10px;
-    top: -20px;
-    background: #ff4444;
-    border-radius: 50%;
-    text-align: center;
-    color: #fff;
-    font-size: 14px;
-    width: 50px;
-    height: 50px;
-    padding: 15px 0 0 0;
-}
-
-.pagination {
-    justify-content: center;
-}
-
-/* input.btn {
-    background: transparent;
-    border: none;
-    color: #fff;
-    padding: 8px 10px;
-    margin-top: 0px;
-}
-
-.btn-light:hover {
-    background: transparent !important;
-    border: none !important;
-    color: #fff !important;
-} */
-
-.card-text {
-    text-align: justify;
-    text-justify: inter-word;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.pagination {
-    margin-top: 50px;
-    margin-bottom: 50px;
 }
 
 .footer-basic {
@@ -276,6 +189,17 @@ hr {
     color: #ffffff;
 }
 
+.table>:not(caption)>*>* {
+    background-color:var(--bs-table-bg);
+    border-width:1px;
+    box-shadow:inset 0 0 0 9999px var(--bs-table-accent-bg);
+}
+
+#bodyContainer{
+    margin-top: 100px;
+}
+
+  
 .footer-basic ul {
     padding: 0;
     list-style: none;
@@ -336,3 +260,4 @@ hr {
     padding-left: 0px;
     padding-right: 0px;
 }
+

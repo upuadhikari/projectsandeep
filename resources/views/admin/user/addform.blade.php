@@ -1,87 +1,72 @@
 @extends('admin.adminmaster')
 @section('content')
-<div class="container">
 
-      <form method="POST" 
-      action="{{url('admin/users/add-user/')}}" enctype="multipart/form-data">
-          @csrf
-          <div class="field">
-        <label class="label">Username</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Text input" name ="name">
+<div class="container py-4">
+  <div class="row">
+    <div class="col-md-2 mx-auto">
+  <h3 class="text-info border border-info text-center py-3">Add User</h3>
+    </div>
+  </div>
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <form method="POST" action="{{url('admin/users/add-user/')}}" enctype="multipart/form-data">
+            @csrf
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                    <input class="input" type="text" placeholder="Username" name ="name" required>
+                  </div>
+                    <div class="col-sm-6">
+                    <input class="input" type="text" placeholder="Full Name" name ="fullname" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                    <input class="input" type="email" placeholder="Email" name="email" required>
+                    </div>
+                    <div class="col-sm-6">
+                    <input class="input" type="text" placeholder="Address" name="address" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <input class="input" type="password" placeholder="Password" name="password" required>
+                    </div>
+                    <div class="col-sm-6">
+                    <input class="input" type="password" placeholder="Confirm Password" name="password_confirmation" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                    <input class="input" type="text" placeholder="Mobile No." name="mobile" required>
+                    </div>
+                    <div class="col-sm-3">
+                    <select name="status" class="form-select">
+                    <option selected>Select Status</option>
+                      <option value="1">Active</option>
+                      <option value="0">Inactive</option>
+                    </select>
+                    </div>
+                    <div class="col-sm-3">
+                    <select name="role" class="form-select">
+                    <option selected>Select Role</option>
+                      <option value="1">Normal user</option>
+                      <option value="2">Seller</option>
+                      <option value="3">Admin</option>
+                    </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <input class="input" type="file" name="picture" required>
+                    </div>
+                <div class="col-sm-4"></div>
+                    <div class="col-sm-4 mx-auto my-auto d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary px-5 py-3">Add User</button>
+                    </div>
+                </div>
+            </form>
         </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Fullname</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Text input" name ="fullname">
-        </div>
-      </div>
-
-
-
-
-      <div class="field">
-        <label class="label">Email</label>
-        <div class="control">
-          <input class="input" type="email" placeholder="Email input" value="" name="email">
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Address</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Address input" value="" name="Address">
-        </div>
-      </div>
-
-       <div class="field">
-        <label class="label">Mobile</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Text input" name="mobile">
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Upload Pictures</label>
-        <div class="control">
-        <div class="custom-file">
-          <input type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" name="picture">
-          <label class="custom-file-label custom-file" for="inputGroupFile04">Choose file</label>
-        </div>
-        </div>
-      </div>
-
-      <div class="field">
-        <label class="label">Status:</label>
-        <div class="control">
-          <div class="select">
-            <select name="status">
-              <option value="1">Active</option>
-              <option value="0">Inactive</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="field">
-        <div class="control">
-        <label >Role:</label>
-          <label class="radio">
-            <input type="radio" name="role" value="2">
-            Seller
-          </label>
-          <label class="radio">
-            <input type="radio" name="role" value="1">
-            Normal User
-          </label>
-        </div>
-      </div>
-    <button class="button is-success">Submit</button>
-  </form>
-
+    </div>
 </div>
-
 @stop

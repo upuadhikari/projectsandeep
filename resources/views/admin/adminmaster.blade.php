@@ -1,108 +1,113 @@
 <!DOCTYPE html>
-<html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
-  <title></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- bluma css cdn -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-  
-  <!-- laravel css   -->
-  <link rel="stylesheet" href ="{{ asset('css/bulmaf.css') }}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- boostrap css cdn -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Online Kennel Shop</title>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- extra css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+
+
+
+    <link rel="stylesheet" href="{{ asset('css/nav.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navaddform.css') }}">
+
+
+
+
+
+
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="{{ asset('fonts/material-icon/css/material-design-iconic-font.min.css') }}">
 
 
 </head>
-<body>
+
+<body class="antialiased">
+    @csrf
 
 
-<nav class="navbar is-transparent">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/admin">
-      <b>Admin Control</b>
-    </a>
-    <div class="navbar-burger" data-target="navbarExampleTransparentExample">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/admin">
+            <h2 class="text-white">Admin Panel</h2>
+                <!-- <img class="img-fluid sitelogo" src="{{asset('images/logo.png')}}" alt="" width="200" height="60"> -->
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-  <div id="navbarExampleTransparentExample" class="navbar-menu">
-    <div class="navbar-start">
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" href="/admin/users">
-          Users
-        </a>
-        <div class="navbar-dropdown is-boxed">
-          <a class="navbar-item" href="{{url('admin/users/add-user')}}">
-          Add User
-          </a>       
+            <div class="navbar-nav" id="navbarNavAltMarkup">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white px-3" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Users
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li class="text-center"><a class="dropdown-item" href="/admin/users">View User</a></li>
+                        <li class="text-center"><a class="dropdown-item" href="{{url('admin/users/add-user')}}">Add User</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white px-3" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Products
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li class="text-center"><a class="dropdown-item" href="/admin/products">View Products</a></li>
+                        <li class="text-center"><a class="dropdown-item" href="{{url('admin/products/add-product')}}">Add Product</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white px-3" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Blogs
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li class="text-center"><a class="dropdown-item" href="/admin/blogView">View Blogs</a></li>
+                        <li class="text-center"><a class="dropdown-item" href="{{url('/admin/blogView/add-blog')}}">Add Blog</a></li>
+                        </ul>
+                    </li>
+                </div>
+
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active text-white px-3" aria-current="page" href="{{ url('/') }}">Home</a>
+                    <a class="nav-link text-white px-3" href="/blog">Blog</a> 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white px-3" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li class="text-center"><a class="dropdown-item" href="{{ url('/profile') }}">Profile</a></li>
+                        <li>
+                                <form class="d-grid" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <input type="submit" class="btn btn-light" id="btn-of-blog" value="logout">
+                                </form>
+                            </li>
+
+                        </ul>
+                    </li>
+                </div>
+            </div>
         </div>
-      </div>
+    </nav>
+    @yield ('content')
 
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link" href="/admin/products">
-          Products
-        </a>
-        <div class="navbar-dropdown is-boxed">
-          <a class="navbar-item" href="{{url('admin/products/add-product')}}">
-            Add Product
-          </a>
-        </div>
-      </div>
-      
-      <div class="navbar-item has-dropdown is-hoverable">
-      <a class="navbar-link" href="/admin/blogView">
-          Blog
-        </a>
-        <div class="navbar-dropdown is-boxed">
-          <a class="navbar-item" href="{{url('/admin/blogView/add-blog')}}">
-            Add Blog
-          </a>          
-        </div>
-      </div>
-    </div>
-  </div>
-
-    <div class="navbar-end">
-      <div class="navbar-item">
-      <div class="field is-grouped">
-        <img src="{{asset('/images/users/'.Auth::user()->picture)}}" width="100px" height="200"> 
-        </div>
-      <div class="navbar-item has-dropdown is-hoverable">
-      <a class="navbar-link" href="{{ url('/profile') }}">
-      {{ Auth::user()->name }}
-        </a>
-        <div class="navbar-dropdown is-boxed">
-        <a class="navbar-item" href="{{ url('/') }}">
-          Home
-          </a>
-        <a class="navbar-item" href="{{ url('/profile') }}">
-          Profile
-          </a>  
-         <form action="{{ route('logout') }}" method="POST">
-         @csrf
-         <input type="submit" class="btn btn-light" value="logout">
-         </form>      
-        </div>
-      </div>
-      </div>
-    </div>
-</nav>
-
-@yield('content')
-
-  <script type="text/javascript">
-$(document).on('change', '.custom-file-input', function (event) {
-    $(this).next('.custom-file-label').html(event.target.files[0].name);
-})
-</script>
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"></script>
 </body>
+
 </html>
