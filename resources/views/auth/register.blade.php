@@ -64,8 +64,17 @@
                             <input type="file" class="form-control-file" id="exampleFormControlFile1" name="picture">
                         </div>
 
+                        <!-- <div class="form-group">
+                        <select name="role" class="form-select">
+                            <option selected>Select Role</option>
+                            <option value="1">Normal user</option>
+                            <option value="2">Seller</option>
+                            <option value="3">Admin</option>
+                        </select>
+                        </div> -->
+
                         <div class="form-group form-button">
-                        <x-button class="form-submit" id="signup">
+                        <x-button class="form-submit" id="signup" onclick="atEnd()">
                             {{ __('Register') }}
                         </x-button>
                             <!-- <input type="submit" name="signup" id="signup" class="form-submit" value="register" /> -->
@@ -82,5 +91,11 @@
         
     </x-auth-card>
 </x-guest-layout>
+
+<script>
+function atEnd() {
+  confirm("Please be aware that for verification of seller, contact system admin");
+}
+</script>
 
 @include ('footer')

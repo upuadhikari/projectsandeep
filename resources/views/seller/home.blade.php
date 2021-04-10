@@ -2,6 +2,6 @@
 @section('content')
 	<div style="margin-left: 15px; ">
 		
-	Welcome to seller dashboard . Please select menu.
+	Welcome to admin dashboard . Please select menu.
 	</div>
 @stop

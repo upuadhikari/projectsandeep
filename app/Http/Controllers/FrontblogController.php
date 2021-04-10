@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class FrontblogController extends Controller
 {
     public function index(){
-        $blogs = Blogs::all();
+        $blogs = Blogs::paginate(3);
         return view('blog',compact('blogs'));
     }
 

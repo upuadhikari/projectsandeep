@@ -12,7 +12,7 @@
             @csrf
                 <div class="form-group row">
                     <div class="col-sm-6">
-                    <input class="input" type="text" placeholder="title" name ="title">
+                    <input class="input" type="text" placeholder="Title" name ="title">
                   </div>
                     <div class="col-sm-6">
                     <input class="input" type="file" name="picture" required>

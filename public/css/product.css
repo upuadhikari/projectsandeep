@@ -49,6 +49,12 @@
     /* Legacy iOS */
 }
 
+.pagination {
+    display: flex;
+    justify-content: end;
+   }
+   
+
 
 /* poppins-500 - latin */
 

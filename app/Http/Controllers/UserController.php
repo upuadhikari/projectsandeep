@@ -14,16 +14,6 @@ use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
-	 public function __construct()
-    {
-    	$this->middleware(function ($request, $next) {  
-        if (!Auth::user()->role == 3) {
-        	dd("error");
-            abort(404);
-        }
-            return $next($request);
-        });
-    }
     public function index(Request $request){
         $data= User::orderBy('id','desc')->paginate(5);        
         return view('admin.user.userview',compact('data'));
@@ -33,6 +23,7 @@ class UserController extends Controller
 	            // ->with('name', 'value’')
 	    //return view('userview', compact('data1','data2','data3'));
        }
+
 
     public function addUser()
     {

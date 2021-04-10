@@ -29,7 +29,7 @@
                                 <input type="text" class="form-control ms-2" placeholder="Enter your comment..."> </div>
                             <p class="my-0 d-flex justify-content-end" id="mybtn"><a href="#" class="btn btn-primary">Submit</a></p>
                             <div class="mt-2">
-                                <div class="d-flex flex-row p-3"> <img src="{{asset('/images/users/'.Auth::user()->picture)}}" width="40" height="40" class="rounded-circle mr-3">
+                                <div class="d-flex flex-row p-3"> <img src="{{asset('/images/users/'.Auth::user()->picture)}}" width="70" height="50" class="rounded-circle mr-3">
                                     <div class="w-100 ms-2">
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="d-flex flex-row align-items-center"> <span class="mr-2">Brian selter</span> </div> <small>12h ago</small>

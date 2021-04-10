@@ -10,6 +10,11 @@
     /* Legacy iOS */
 }
 
+.pagination {
+    display: flex;
+    justify-content: end;
+   }
+   
 
 /* poppins-300italic - latin */
 

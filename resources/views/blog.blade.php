@@ -37,64 +37,26 @@
         </div>
     </div>
 
-
-    <div class="container" id="contain">
-        <div id="fh5co-portfolio">
-        @foreach ($blogs as $blog)
-            <div class="fh5co-portfolio-item ">
-                <div class="fh5co-portfolio-figure animate-box">
-                <img src="{{asset('/images/'.$blog->picture)}}" width="700px">
+        <div class="container mt-4">
+            <div class="row">
+            @foreach ($blogs as $blog)
+                <div class="col-4">
+                    <div class="card">
+                        <img src="{{asset('/images/'.$blog->picture)}}" class="card-img-top" id="imgu">
+                            <div class="card-body">
+                                <h5 class="card-title">{{$blog->title}}</h5>
+                                <p class="card-text">{{$blog->body}}</p>
+                                <p><a href="{{ url('/view-blog/'.$blog->id) }}" class="btn btn-primary">Learn More</a></p>
+                            </div>
+                    </div>
                 </div>
-                <div class="fh5co-portfolio-description">
-                    <h1>{{$blog->title}}</h1>
-                    <p>{{$blog->body}}</p>
-                    <p><a href="{{ url('/view-blog/'.$blog->id) }}" class="btn btn-primary">Learn More</a></p>
-                </div>
+            @endforeach
             </div>
-        @endforeach
-
-
-            <!-- <div class="fh5co-portfolio-item fh5co-img-right">
-                <div class="fh5co-portfolio-figure animate-box" style="background-image: url(images/pic_2.jpg);"></div>
-                <div class="fh5co-portfolio-description">
-                    <h1>Project Title</h1>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named
-                        Duden flows by their place and supplies it with the necessary regelialia.</p>
-                    <p><a href="#" class="btn btn-primary">Learn More</a></p>
-                </div>
-            </div>
-            <div class="fh5co-portfolio-item ">
-                <div class="fh5co-portfolio-figure animate-box" style="background-image: url(images/pic_3.jpg);"></div>
-                <div class="fh5co-portfolio-description">
-                    <h1>Project Title</h1>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named
-                        Duden flows by their place and supplies it with the necessary regelialia.</p>
-                    <p><a href="#" class="btn btn-primary">Learn More</a></p>
-                </div>
-            </div>
-            <div class="fh5co-portfolio-item fh5co-img-right">
-                <div class="fh5co-portfolio-figure animate-box" style="background-image: url(images/pic_4.jpg);"></div>
-                <div class="fh5co-portfolio-description">
-                    <h1>Project Title</h1>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named
-                        Duden flows by their place and supplies it with the necessary regelialia.</p>
-                    <p><a href="#" class="btn btn-primary">Learn More</a></p>
-                </div>
-            </div> -->
+        {{ $blogs->links("pagination::bootstrap-4") }}
         </div>
-    </div>
 
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
+
+
+
+
 @include('footer')

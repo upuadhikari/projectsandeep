@@ -6,6 +6,8 @@ Use App\Http\Controllers\ProductController;
 Use App\Http\Controllers\BlogController;
 Use App\Http\Controllers\FrontproductController;
 Use App\Http\Controllers\FrontblogController;
+Use App\Http\Controllers\SellerviewController;
+Use App\Http\Controllers\SellerblogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +21,6 @@ Use App\Http\Controllers\FrontblogController;
 */
 
 Route::get('/',[FrontproductController::class, 'index']);
-
-// Route::get('/blog',[FrontblogController::class, 'index']);
 
 Route::group(['prefix'=>'admin','middleware'=>'admin'],function (){
     Route::get('/',[UserController::class, 'index']);
@@ -66,6 +66,50 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function (){
 
 });
 
+
+
+
+Route::group(['prefix'=>'seller','middleware'=>'seller'],function (){
+    Route::get('/',[SellerviewController::class, 'index']);
+       
+
+    Route::group(['prefix'=>'products','middleware'=>'auth'],function (){
+
+        Route::get('/',[SellerviewController::class, 'index']);
+        Route::post('/updateuserinfo/{id}',[SellerviewController::class, 'UpdateProduct']);
+        Route::get('/add-product',[SellerviewController::class, 'addProduct']);
+        // Route::post('/search-product',[SellerviewController::class, 'searchproductForAdmin']);
+        Route::post('/add-product',[SellerviewController::class, 'addNewProduct']);
+        Route::post('/delete/{id}',[SellerviewController::class, 'deleteProduct']);                                                                                                            
+        Route::get('/edit-product/{id}',[SellerviewController::class, 'editProduct']);
+        Route::post('/edit-product/{id}',[SellerviewController::class, 'updateProduct']);
+
+    });
+    
+    Route::group(['prefix'=>'blogView','middleware'=>'auth'],function (){
+
+        Route::get('/',[SellerblogController::class, 'index']);
+        Route::post('/updateuserinfo/{id}',[SellerblogController::class, 'UpdateBlog']);
+        Route::get('/add-blog',[SellerblogController::class, 'addBlog']);
+        // Route::post('/search-blog',[SellerblogController::class, 'searchblogForAdmin']);
+        Route::post('/add-blog',[SellerblogController::class, 'addNewBlog']);
+        Route::get('/edit-blog/{id}',[SellerblogController::class, 'editBlog']);
+        Route::post('/edit-blog/{id}',[SellerblogController::class, 'updateBlog']);
+        Route::post('/delete-blog/{id}',[SellerblogController::class, 'deleteBlog']);
+
+    });
+
+});
+
+
+
+
+
+
+
+
+
+
 Route::group(['prefix'=>'homeproducts'],function (){
 
     Route::get('/',[FrontproductController::class, 'index']);
@@ -73,8 +117,6 @@ Route::group(['prefix'=>'homeproducts'],function (){
     
 
 });
-
-
 
     Route::get('/blog',[FrontblogController::class, 'index'])->middleware(['auth']);
     Route::get('/view-blog/{id}',[FrontblogController::class, 'viewBlog'])->middleware(['auth']);

@@ -158,6 +158,26 @@ body {
     font-family: Poppins;
 }
 
+.page-link {
+    color:#fd0d7e;
+   }
+
+.page-link:hover {
+    color:#fd0d7e;
+   }
+
+.page-item.active .page-link {
+    background-color: #fd0d7e;
+    border-color: #fd0d7e;
+}
+
+.page-item.active .page-link:hover {
+    background-color: #fd0d7e;
+    border-color: #fd0d7e;
+}
+   
+
+
 .sitelogo {
     color: #fff;
 }
@@ -174,6 +194,9 @@ body {
 /* #cardoflist{
 margin-top: 10px;
 } */
+
+
+
 
 hr {
     opacity: 0;
@@ -195,6 +218,12 @@ hr {
     background-color: inherit
 }
 
+
+.pagination {
+    display: flex;
+    justify-content: end;
+   }
+   
 
 #breed-name {
     color: #fe6168;

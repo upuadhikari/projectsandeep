@@ -75,9 +75,13 @@
                 <div class="navbar-nav">
                 <a class="nav-link active text-white px-3" aria-current="page" href="{{ url('/') }}">Home</a>
                     @auth
+                    @if( Auth::user()->role == 2)
+                    <a class="nav-link text-white px-3" href="{{ url('/seller') }}">Products</a>
+                    <a class="nav-link text-white px-3" href="{{ url('/blog') }}">Blogs</a>
+                    @endif
                     @if( Auth::user()->role == 3)
                         <a class="nav-link text-white px-3" href="{{ url('/admin') }}">Admin</a>
-                        <a class="nav-link text-white px-3" href="/blog">Blog</a>                  
+                        <a class="nav-link text-white px-3" href="{{ url('/blog') }}">Blogs</a>                  
                     @endif
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white px-3" href="#" id="navbarDropdown" role="button"

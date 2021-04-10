@@ -36,9 +36,6 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <div class="col-sm-6">
-                    <input class="input" type="text" placeholder="Mobile No." name="mobile" required>
-                    </div>
                     <div class="col-sm-3">
                     <select name="status" class="form-select">
                     <option selected>Select Status</option>
