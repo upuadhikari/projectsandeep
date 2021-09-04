@@ -21,6 +21,8 @@ Use App\Http\Controllers\SellerblogController;
 */
 
 Route::get('/',[FrontproductController::class, 'index']);
+Route::get('products/add-to-cart/{id}',[ProductController::class, 'addToCart']);        
+
 
 Route::group(['prefix'=>'admin','middleware'=>'admin'],function (){
     Route::get('/',[UserController::class, 'index']);

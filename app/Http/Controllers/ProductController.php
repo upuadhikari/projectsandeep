@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Products;
+use App\Models\Cart;
 use Illuminate\Support\Facades\File;
+use Illuminate\Http\Response;
 
 class ProductController extends Controller
 {
@@ -100,6 +102,7 @@ class ProductController extends Controller
         ]
         );
 
+
         $product = Products::findOrFail($id);
         $product->name = $request->name;
         $product->detail = $request->detail;
@@ -139,6 +142,36 @@ class ProductController extends Controller
         $searched=$request->searched;
         $data= Products::Where('name','Like',"%$searched%")->orWhere('price','Like',"%$searched%")->get();
         return view('admin.product.search',compact('data','searched'));
+    }
+
+    public function addToCart(Request $request ,$productid){
+
+        $productId = $productid;
+        $cart_id = session()->get('cartid');
+        if(!$cart_id) {
+            $cart_id= uniqid();
+            session()->put('cartid', $cart_id);
+        }
+         $product = Products::findOrFail($productId);
+
+        $product_exist= Cart::where('cart_number',$cart_id)->Where('product_id',$productId)->first();
+        if($product_exist){
+            $product_exist->quantity = $product_exist->quantity+1;
+            $product_exist->save();
+        }
+        else{
+            $cart = new Cart;
+            $cart->cart_number = $cart_id;
+            $cart->product_id = $productId;
+            $cart->product_name = $product->name ;
+            $cart->price = $product->price ;
+            $cart->status = 1 ;
+            $cart->quantity = 1;
+            $cart->save();
+        }
+
+        
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
 }

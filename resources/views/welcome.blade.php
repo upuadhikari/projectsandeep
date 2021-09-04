@@ -43,6 +43,7 @@
                         <h5 class="card-title" id="breed-name">{{$product->name}}</h5>
                         <p class="card-text">{{$product->detail}}</p>
                         <a href="{{ url('/homeproducts/view-product/'.$product->id) }}" id="more-details" class="btn btn-primary">More Details</a>
+                        <a href="{{ url('/products/add-to-cart/'.$product->id) }}" id="more-details" class="btn btn-danger">Add to cart</a>
                     </div>
                 </div>
             </div>
